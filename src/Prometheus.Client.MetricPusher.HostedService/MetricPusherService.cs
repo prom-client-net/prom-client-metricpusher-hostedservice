@@ -16,6 +16,7 @@ public class MetricPusherService : BackgroundService
         _pusher = pusher;
     }
 
+    // TODO: add tests
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         async Task DoPushAsync()
