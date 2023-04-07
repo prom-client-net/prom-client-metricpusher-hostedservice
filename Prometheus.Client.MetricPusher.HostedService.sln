@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AC1ADDA5-C0B4-4869-BA6B-2E83B34B5BB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prometheus.Client.MetricPusher.HostedService", "src\Prometheus.Client.MetricPusher.HostedService.csproj", "{C77EB3BB-08D7-4B18-9833-6D5486AA42C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{B3C2C9C6-644B-4EE9-970F-33BF20416705}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		Directory.Build.props = Directory.Build.props
+		stylecop.json = stylecop.json
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		.editorconfig = .editorconfig
+		README.md = README.md
+		.ruleset = .ruleset
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{C8850E24-C8D1-4100-9309-F6B5C0080F2C}"
+	ProjectSection(SolutionItems) = preProject
+		.github\CODEOWNERS = .github\CODEOWNERS
+		.github\FUNDING.yml = .github\FUNDING.yml
+		.github\renovate.json = .github\renovate.json
+		.github\settings.yml = .github\settings.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{1231459A-DF4D-406F-AF1D-8B62BA569BCC}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\ci.yml = .github\workflows\ci.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C77EB3BB-08D7-4B18-9833-6D5486AA42C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C77EB3BB-08D7-4B18-9833-6D5486AA42C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C77EB3BB-08D7-4B18-9833-6D5486AA42C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C77EB3BB-08D7-4B18-9833-6D5486AA42C8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C77EB3BB-08D7-4B18-9833-6D5486AA42C8} = {AC1ADDA5-C0B4-4869-BA6B-2E83B34B5BB4}
+		{1231459A-DF4D-406F-AF1D-8B62BA569BCC} = {C8850E24-C8D1-4100-9309-F6B5C0080F2C}
+	EndGlobalSection
+EndGlobal
