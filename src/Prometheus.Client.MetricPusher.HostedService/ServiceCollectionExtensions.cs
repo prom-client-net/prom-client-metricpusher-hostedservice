@@ -9,8 +9,10 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddMetricPusherService(this IServiceCollection services, MetricPusherOptions options, TimeSpan interval)
     {
-        if (options == null) throw new ArgumentNullException(nameof(options));
-        if (interval == TimeSpan.Zero) throw new ArgumentOutOfRangeException(nameof(interval));
+        if (options == null)
+            throw new ArgumentNullException(nameof(options));
+        if (interval == TimeSpan.Zero)
+            throw new ArgumentOutOfRangeException(nameof(interval));
 
         services.AddSingleton<IHostedService, MetricPusherService>(provider =>
         {

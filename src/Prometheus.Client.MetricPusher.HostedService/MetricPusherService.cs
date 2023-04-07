@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Prometheus.Client.MetricPusher.HostedService;
 
-public class MetricPusherService: BackgroundService
+public class MetricPusherService : BackgroundService
 {
     private readonly MetricPusher _pusher;
     private readonly TimeSpan _interval;
@@ -24,7 +24,7 @@ public class MetricPusherService: BackgroundService
             {
                 await _pusher.PushAsync();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // TODO: report error to DiagnosticSource?
             }
