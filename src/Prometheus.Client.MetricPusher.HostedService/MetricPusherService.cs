@@ -7,13 +7,13 @@ namespace Prometheus.Client.MetricPusher.HostedService;
 
 public class MetricPusherService : BackgroundService
 {
-    private readonly MetricPusher _pusher;
+    private readonly IMetricPusher _pusher;
     private readonly TimeSpan _interval;
 
-    public MetricPusherService(MetricPusherOptions pusherOptions, TimeSpan interval)
+    public MetricPusherService(IMetricPusher pusher, TimeSpan interval)
     {
         _interval = interval;
-        _pusher = new MetricPusher(pusherOptions);
+        _pusher = pusher;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -44,11 +44,5 @@ public class MetricPusherService : BackgroundService
 
         // Push the very last metric values before exit
         await DoPushAsync();
-    }
-
-    public override void Dispose()
-    {
-        base.Dispose();
-        _pusher?.Dispose();
     }
 }
