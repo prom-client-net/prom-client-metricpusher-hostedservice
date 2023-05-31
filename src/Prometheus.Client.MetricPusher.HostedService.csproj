@@ -3,15 +3,9 @@
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
     <VersionPrefix>0.0.1</VersionPrefix>
     <Description>Prometheus.Client.MetricPusher as HostedService</Description>
-    <PackageId>Prometheus.Client.MetricPusher.HostedService</PackageId>
     <RepositoryUrl>https://github.com/prom-client-net/prom-client-metricpusher-hostedservice</RepositoryUrl>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <AssemblyOriginatorKeyFile>../Prometheus.Client.MetricPusher.HostedService.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  <ItemGroup>
-    <None Include="../icon.png" Visible="false" Pack="true" PackagePath="" />
-    <None Include="../README.md" Visible="false"  Pack="true" PackagePath="" />
-  </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0'">
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
