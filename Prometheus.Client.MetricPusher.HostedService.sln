@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prometheus.Client.MetricPusher.HostedService", "src\Prometheus.Client.MetricPusher.HostedService\Prometheus.Client.MetricPusher.HostedService.csproj", "{CD73BF99-211A-496F-983B-A55A22DE4FEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prometheus.Client.MetricPusher.HostedService", "src\Prometheus.Client.MetricPusher.HostedService.csproj", "{0E1315C9-0B9C-438C-ADC7-DEB0CFC8CF5C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Prometheus.Client.MetricPusher.HostedService.Tests", "tests\Prometheus.Client.MetricPusher.HostedService.Tests\Prometheus.Client.MetricPusher.HostedService.Tests.csproj", "{2CC30054-6E22-4112-9DB1-7FFA154B92FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prometheus.Client.MetricPusher.HostedService.Tests", "tests\Prometheus.Client.MetricPusher.HostedService.Tests.csproj", "{D3310A66-8E6B-4F26-B0FD-B5A152ECAB84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CD73BF99-211A-496F-983B-A55A22DE4FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CD73BF99-211A-496F-983B-A55A22DE4FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CD73BF99-211A-496F-983B-A55A22DE4FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CD73BF99-211A-496F-983B-A55A22DE4FEE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2CC30054-6E22-4112-9DB1-7FFA154B92FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2CC30054-6E22-4112-9DB1-7FFA154B92FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2CC30054-6E22-4112-9DB1-7FFA154B92FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2CC30054-6E22-4112-9DB1-7FFA154B92FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E1315C9-0B9C-438C-ADC7-DEB0CFC8CF5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E1315C9-0B9C-438C-ADC7-DEB0CFC8CF5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E1315C9-0B9C-438C-ADC7-DEB0CFC8CF5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E1315C9-0B9C-438C-ADC7-DEB0CFC8CF5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3310A66-8E6B-4F26-B0FD-B5A152ECAB84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3310A66-8E6B-4F26-B0FD-B5A152ECAB84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3310A66-8E6B-4F26-B0FD-B5A152ECAB84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3310A66-8E6B-4F26-B0FD-B5A152ECAB84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
