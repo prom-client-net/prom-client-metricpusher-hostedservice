@@ -1,9 +1,10 @@
-*.user
-*.opencover.xml
-*.orig
-*.nupkg
-*.snupkg
-.idea
-bin
-obj
-BenchmarkDotNet.Artifacts
+# Rider
+.idea/
+
+# Visual Studio
+.vs/
+
+# Build results
+[Bb]in/
+[Oo]bj/
+
