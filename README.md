@@ -15,6 +15,23 @@ Extension for [Prometheus.Client](https://github.com/prom-client-net/prom-client
 dotnet add package Prometheus.Client.MetricPusher.HostedService
 ```
 
+## Use
+
+[Examples](https://github.com/prom-client-net/prom-examples)
+
+```c#
+var metricPusher = new MetricPusher(new MetricPusherOptions
+{
+    Endpoint = "http://localhost:9091",
+    Job = "pushgateway",
+    Instance = "instance"
+});
+```
+
+```c#
+services.AddMetricPusherService(metricPusher, TimeSpan.FromSeconds(1));
+```
+
 ## Contribute
 
 Contributions to the package are always welcome!
