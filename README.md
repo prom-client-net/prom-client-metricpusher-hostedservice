@@ -1,7 +1,19 @@
 # prom-client-metricpusher-hostedservice
 
 [![ci](https://img.shields.io/github/actions/workflow/status/prom-client-net/prom-client-metricpusher-hostedservice/ci.yml?branch=main&label=ci&logo=github&style=flat-square)](https://github.com/prom-client-net/prom-client-metricpusher-hostedservice/actions/workflows/ci.yml)
+[![nuget](https://img.shields.io/nuget/v/Prometheus.Client.MetricPusher.HostedService?logo=nuget&style=flat-square)](https://www.nuget.org/packages/Prometheus.Client.MetricPusher.HostedService)
+[![nuget](https://img.shields.io/nuget/dt/Prometheus.Client.MetricPusher.HostedService?logo=nuget&style=flat-square)](https://www.nuget.org/packages/Prometheus.Client.MetricPusher.HostedService)
+[![codecov](https://img.shields.io/codecov/c/github/prom-client-net/prom-client-metricpusher-hostedservice?logo=codecov&style=flat-square)](https://app.codecov.io/gh/prom-client-net/prom-client-metricpusher-hostedservice)
+[![codefactor](https://img.shields.io/codefactor/grade/github/prom-client-net/prom-client-metricpusher-hostedservice?logo=codefactor&style=flat-square)](https://www.codefactor.io/repository/github/prom-client-net/prom-client-metricpusher-hostedservice)
 [![license](https://img.shields.io/github/license/prom-client-net/prom-client-metricpusher-hostedservice?style=flat-square)](https://github.com/prom-client-net/prom-client-metricpusher-hostedservice/blob/main/LICENSE)
+
+Extension for [Prometheus.Client](https://github.com/prom-client-net/prom-client)
+
+## Installation
+
+```sh
+dotnet add package Prometheus.Client.MetricPusher.HostedService
+```
 
 ## Contribute
 
