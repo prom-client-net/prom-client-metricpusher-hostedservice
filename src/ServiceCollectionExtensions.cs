@@ -6,7 +6,6 @@ namespace Prometheus.Client.MetricPusher.HostedService;
 
 public static class ServiceCollectionExtensions
 {
-    // TODO: add tests
     public static IServiceCollection AddMetricPusherService(this IServiceCollection services, IMetricPusher pusher, TimeSpan interval)
     {
         if (pusher == null)
