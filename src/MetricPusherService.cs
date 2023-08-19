@@ -10,10 +10,15 @@ public class MetricPusherService : BackgroundService
     private readonly IMetricPusher _pusher;
     private readonly TimeSpan _interval;
 
+    public MetricPusherService(IMetricPusher pusher)
+        : this(pusher, TimeSpan.FromMilliseconds(1000))
+    {
+    }
+
     public MetricPusherService(IMetricPusher pusher, TimeSpan interval)
     {
-        _interval = interval;
         _pusher = pusher;
+        _interval = interval;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
