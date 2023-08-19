@@ -10,26 +10,19 @@ public class MetricPusherService : BackgroundService
     private readonly IMetricPusher _pusher;
     private readonly TimeSpan _interval;
 
+    public MetricPusherService(IMetricPusher pusher)
+        : this(pusher, Defaults.Interval)
+    {
+    }
+
     public MetricPusherService(IMetricPusher pusher, TimeSpan interval)
     {
-        _interval = interval;
         _pusher = pusher;
+        _interval = interval;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        async Task DoPushAsync()
-        {
-            try
-            {
-                await _pusher.PushAsync();
-            }
-            catch (Exception)
-            {
-                // TODO: report error to DiagnosticSource?
-            }
-        }
-
         while (!stoppingToken.IsCancellationRequested)
         {
             await DoPushAsync();
@@ -44,5 +37,18 @@ public class MetricPusherService : BackgroundService
 
         // Push the very last metric values before exit
         await DoPushAsync();
+        return;
+
+        async Task DoPushAsync()
+        {
+            try
+            {
+                await _pusher.PushAsync();
+            }
+            catch (Exception)
+            {
+                // TODO: report error to DiagnosticSource?
+            }
+        }
     }
 }
