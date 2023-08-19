@@ -27,6 +27,19 @@ public class ServiceCollecttionExtensionsTests
     }
 
     [Fact]
+    public void AddMetricPusherService_WithDefaultInterval_AddsMetricPusherServiceInServiceCollection()
+    {
+        var servicesCollection = new ServiceCollection();
+        var metricPusher = Substitute.For<IMetricPusher>();
+
+        servicesCollection.AddMetricPusherService(metricPusher);
+        var provider = servicesCollection.BuildServiceProvider();
+        var service = provider.GetRequiredService<IHostedService>();
+
+        service.Should().BeOfType<MetricPusherService>();
+    }
+
+    [Fact]
     public void AddMetricPusherService_WithValidParameterValues_AddsMetricPusherServiceInServiceCollection()
     {
         var servicesCollection = new ServiceCollection();
