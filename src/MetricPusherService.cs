@@ -23,18 +23,6 @@ public class MetricPusherService : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        async Task DoPushAsync()
-        {
-            try
-            {
-                await _pusher.PushAsync();
-            }
-            catch (Exception)
-            {
-                // TODO: report error to DiagnosticSource?
-            }
-        }
-
         while (!stoppingToken.IsCancellationRequested)
         {
             await DoPushAsync();
@@ -49,5 +37,18 @@ public class MetricPusherService : BackgroundService
 
         // Push the very last metric values before exit
         await DoPushAsync();
+        return;
+
+        async Task DoPushAsync()
+        {
+            try
+            {
+                await _pusher.PushAsync();
+            }
+            catch (Exception)
+            {
+                // TODO: report error to DiagnosticSource?
+            }
+        }
     }
 }
