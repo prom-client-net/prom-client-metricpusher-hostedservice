@@ -19,15 +19,19 @@ public class MetricPusherServiceTests
         await metricPusherMock.Received(3).PushAsync();
     }
 
-    [Fact]
-    public async Task WithGivenInterval_PushMetricPeriodically()
+    [Theory]
+    [InlineData(1)]
+    [InlineData(2)]
+    [InlineData(3)]
+    [InlineData(5)]
+    public async Task WithGivenInterval_PushMetricPeriodically(int seconds)
     {
         var metricPusherMock = Substitute.For<IMetricPusher>();
-        var metricPusherService = new MetricPusherService(metricPusherMock, TimeSpan.FromSeconds(1));
+        var metricPusherService = new MetricPusherService(metricPusherMock, TimeSpan.FromSeconds(seconds));
         var canellationToken = Arg.Any<CancellationToken>();
 
         await metricPusherService.StartAsync(canellationToken);
-        await Task.Delay(TimeSpan.FromSeconds(1), canellationToken);
+        await Task.Delay(TimeSpan.FromSeconds(seconds), canellationToken);
         await metricPusherService.StopAsync(canellationToken);
 
         await metricPusherMock.Received(3).PushAsync();
