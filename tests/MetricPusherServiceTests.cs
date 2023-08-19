@@ -13,7 +13,7 @@ public class MetricPusherServiceTests
         var canellationToken = Arg.Any<CancellationToken>();
 
         await metricPusherService.StartAsync(canellationToken);
-        await Task.Delay(TimeSpan.FromSeconds(1), canellationToken);
+        await Task.Delay(GetDelay(1), canellationToken);
         await metricPusherService.StopAsync(canellationToken);
 
         await metricPusherMock.Received(3).PushAsync();
@@ -31,9 +31,15 @@ public class MetricPusherServiceTests
         var canellationToken = Arg.Any<CancellationToken>();
 
         await metricPusherService.StartAsync(canellationToken);
-        await Task.Delay(TimeSpan.FromSeconds(seconds), canellationToken);
+        await Task.Delay(GetDelay(seconds), canellationToken);
         await metricPusherService.StopAsync(canellationToken);
 
         await metricPusherMock.Received(3).PushAsync();
+    }
+
+    private static TimeSpan GetDelay(int seconds)
+    {
+        var milliseconds = seconds * 1000 + 100;
+        return TimeSpan.FromMilliseconds(milliseconds);
     }
 }
