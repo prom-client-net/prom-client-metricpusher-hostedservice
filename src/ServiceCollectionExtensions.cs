@@ -6,6 +6,11 @@ namespace Prometheus.Client.MetricPusher.HostedService;
 
 public static class ServiceCollectionExtensions
 {
+    public static IServiceCollection AddMetricPusherService(this IServiceCollection services, IMetricPusher pusher)
+    {
+        return AddMetricPusherService(services, pusher, Defaults.Interval);
+    }
+
     public static IServiceCollection AddMetricPusherService(this IServiceCollection services, IMetricPusher pusher, TimeSpan interval)
     {
         if (pusher == null)
