@@ -11,7 +11,7 @@ public class MetricPusherService : BackgroundService
     private readonly TimeSpan _interval;
 
     public MetricPusherService(IMetricPusher pusher)
-        : this(pusher, TimeSpan.FromMilliseconds(1000))
+        : this(pusher, Defaults.Interval)
     {
     }
 
