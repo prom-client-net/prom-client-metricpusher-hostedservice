@@ -1,4 +1,4 @@
-name: Automerge phnx47[bot] PRs
+name: Automerge
 
 on:
   pull_request:
@@ -11,20 +11,11 @@ permissions:
   contents: write
 
 jobs:
-  debug:
-    name: Enable Automerge
-    runs-on: ubuntu-22.04
-    steps:
-       - run: |
-          echo actor=${{ github.actor }}
-          echo labels=${{ github.event.pull_request.labels.*.name }}
-
   automerge:
-    name: Enable Automerge
+    name: Enable PR Automerge
     runs-on: ubuntu-22.04
     if: github.actor == 'phnx47-bot' && contains(github.event.pull_request.labels.*.name, 'sync')
     steps:
-      - name: Enable PR Automerge
-        run: gh pr merge --merge --auto "1"
+      - run: gh pr merge -s --auto ${{ github.event.pull_request.number }}
         env:
           GH_TOKEN: ${{ secrets.GH_FULL_PAT }}
