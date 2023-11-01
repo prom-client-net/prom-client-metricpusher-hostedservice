@@ -1,0 +1,21 @@
+name: Automerge phnx47[bot]
+
+on:
+  pull_request:
+    branches:
+      - "main"
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  automerge:
+    name: Automerge phnx47[bot]
+    runs-on: ubuntu-22.04
+    if: github.actor == 'phnx47-bot'
+    steps:
+      - name: Enable Pull Request Automerge
+        run: gh pr merge --merge --auto "1"
+        env:
+          GH_TOKEN: ${{ secrets.GH_FULL_PAT }}
