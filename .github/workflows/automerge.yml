@@ -15,7 +15,7 @@ jobs:
     name: Enable Automerge
     runs-on: ubuntu-22.04
     steps:
-        run: |
+       - run: |
           echo actor=${{ github.actor }}
           echo labels=${{ github.event.pull_request.labels.*.name }}
 
