@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   automerge:
-    name: Enable PR auto-merge
+    name: Enable auto-merge
     runs-on: ubuntu-22.04
     if: github.actor == 'phnx47-bot' && contains(github.event.pull_request.labels.*.name, 'sync')
     steps:
