@@ -1,7 +1,8 @@
-name: Automerge phnx47[bot]
+name: Automerge phnx47[bot] sync
 
 on:
   pull_request:
+    types: [labeled]
     branches:
       - "main"
 
@@ -11,9 +12,9 @@ permissions:
 
 jobs:
   automerge:
-    name: Automerge phnx47[bot]
+    name: Automerge
     runs-on: ubuntu-22.04
-    if: github.actor == 'phnx47-bot'
+    if: github.event.label.name == 'sync' && github.actor == 'phnx47-bot'
     steps:
       - name: Enable Pull Request Automerge
         run: gh pr merge --merge --auto "1"
