@@ -11,6 +11,14 @@ permissions:
   contents: write
 
 jobs:
+  debug:
+    name: Enable Automerge
+    runs-on: ubuntu-22.04
+    steps:
+        run: |
+          echo actor=${{ github.actor }}
+          echo labels=${{ github.event.pull_request.labels.*.name }}
+
   automerge:
     name: Enable Automerge
     runs-on: ubuntu-22.04
