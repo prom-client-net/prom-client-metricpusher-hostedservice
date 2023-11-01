@@ -14,7 +14,7 @@ jobs:
   automerge:
     name: Enable Automerge
     runs-on: ubuntu-22.04
-    if: github.actor == 'phnx47-bot' && contains(github.event.issue.labels.*.name, 'sync')
+    if: github.actor == 'phnx47-bot' && contains(github.event.pull_request.labels.*.name, 'sync')
     steps:
       - name: Enable PR Automerge
         run: gh pr merge --merge --auto "1"
