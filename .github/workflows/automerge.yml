@@ -1,4 +1,4 @@
-name: Automerge phnx47[bot] sync
+name: Automerge phnx47[bot] PRs
 
 on:
   pull_request:
@@ -12,11 +12,11 @@ permissions:
 
 jobs:
   automerge:
-    name: Automerge
+    name: Enable Automerge
     runs-on: ubuntu-22.04
-    if: github.event.label.name == 'sync' && github.actor == 'phnx47-bot'
+    if: github.actor == 'phnx47-bot' && contains(github.event.issue.labels.*.name, 'sync')
     steps:
-      - name: Enable Pull Request Automerge
+      - name: Enable PR Automerge
         run: gh pr merge --merge --auto "1"
         env:
           GH_TOKEN: ${{ secrets.GH_FULL_PAT }}
