@@ -6,19 +6,19 @@ namespace Prometheus.Client.MetricPusher.HostedService;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddMetricPusherService(this IServiceCollection services, IMetricPusher pusher)
+    public static IServiceCollection AddMetricPusherHostedService(this IServiceCollection services, IMetricPusher pusher)
     {
-        return AddMetricPusherService(services, pusher, Defaults.Interval);
+        return AddMetricPusherHostedService(services, pusher, Defaults.PushInterval);
     }
 
-    public static IServiceCollection AddMetricPusherService(this IServiceCollection services, IMetricPusher pusher, TimeSpan interval)
+    public static IServiceCollection AddMetricPusherHostedService(this IServiceCollection services, IMetricPusher pusher, TimeSpan pushInterval)
     {
         if (pusher == null)
             throw new ArgumentNullException(nameof(pusher));
-        if (interval == TimeSpan.Zero)
-            throw new ArgumentOutOfRangeException(nameof(interval));
+        if (pushInterval == TimeSpan.Zero)
+            throw new ArgumentOutOfRangeException(nameof(pushInterval));
 
-        services.AddSingleton<IHostedService, MetricPusherService>(_ => new MetricPusherService(pusher, interval));
+        services.AddSingleton<IHostedService, MetricPusherHostedService>(_ => new MetricPusherHostedService(pusher, pushInterval));
 
         return services;
     }
