@@ -37,6 +37,21 @@ public class MetricPusherHostedServiceTests
         await metricPusherMock.Received(3).PushAsync();
     }
 
+    [Fact]
+    public async Task OnPushError_HandlesException()
+    {
+        var pusher = Substitute.For<IMetricPusher>();
+        pusher.PushAsync().Returns(Task.FromException(new Exception("Simulated Push Exception")));
+        var ct = Arg.Any<CancellationToken>();
+
+        var hostedService = new TestableMetricPusherHostedService(pusher);
+        await hostedService.StartAsync(ct);
+        await Task.Delay(1000, ct);
+        await hostedService.StopAsync(ct);
+
+        Assert.True(hostedService.ErrorHandled);
+    }
+
     private static TimeSpan GetDelay(int seconds)
     {
         var milliseconds = seconds * 1000 + 100;
