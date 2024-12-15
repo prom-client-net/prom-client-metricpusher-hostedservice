@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Prometheus.Client.MetricPusher.HostedService.Tests;
 
-public class ServiceCollecttionExtensionsTests
+public class ServiceCollectionExtensionsTests
 {
     [Fact]
     public void AddMetricPusherService_WithNullMetricPusher_ThrowsArgumentNullException()

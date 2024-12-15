@@ -5,20 +5,11 @@ using Microsoft.Extensions.Hosting;
 
 namespace Prometheus.Client.MetricPusher.HostedService;
 
-public class MetricPusherHostedService : BackgroundService
+public class MetricPusherHostedService(IMetricPusher pusher, TimeSpan pushInterval) : BackgroundService
 {
-    private readonly IMetricPusher _pusher;
-    private readonly TimeSpan _interval;
-
     public MetricPusherHostedService(IMetricPusher pusher)
-        : this(pusher, Defaults.Interval)
+        : this(pusher, Defaults.PushInterval)
     {
-    }
-
-    public MetricPusherHostedService(IMetricPusher pusher, TimeSpan interval)
-    {
-        _pusher = pusher;
-        _interval = interval;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -28,7 +19,7 @@ public class MetricPusherHostedService : BackgroundService
             await DoPushAsync();
             try
             {
-                await Task.Delay(_interval, stoppingToken);
+                await Task.Delay(pushInterval, stoppingToken);
             }
             catch (TaskCanceledException)
             {
@@ -43,7 +34,7 @@ public class MetricPusherHostedService : BackgroundService
         {
             try
             {
-                await _pusher.PushAsync();
+                await pusher.PushAsync();
             }
             catch (Exception)
             {
