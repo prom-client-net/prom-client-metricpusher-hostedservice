@@ -49,7 +49,7 @@ public class MetricPusherHostedServiceTests
         var hostedService = new TestableMetricPusherHostedService(pusher);
 
         await hostedService.StartAsync(ct);
-        await Task.Delay(GetDelay(1), ct);
+        await Task.Delay(100, ct);
         await hostedService.StopAsync(ct);
 
         hostedService.ErrorHandled.Should().BeTrue();
