@@ -8,15 +8,16 @@ public class MetricPusherHostedServiceTests
     [Fact]
     public async Task WithDefaultInterval_PushMetricPeriodically()
     {
-        var metricPusherMock = Substitute.For<IMetricPusher>();
-        var metricPusherService = new MetricPusherHostedService(metricPusherMock);
-        var canellationToken = Arg.Any<CancellationToken>();
+        var pusher = Substitute.For<IMetricPusher>();
+        var ct = Arg.Any<CancellationToken>();
 
-        await metricPusherService.StartAsync(canellationToken);
-        await Task.Delay(GetDelay(1), canellationToken);
-        await metricPusherService.StopAsync(canellationToken);
+        var hostedService = new MetricPusherHostedService(pusher);
 
-        await metricPusherMock.Received(3).PushAsync();
+        await hostedService.StartAsync(ct);
+        await Task.Delay(GetDelay(1), ct);
+        await hostedService.StopAsync(ct);
+
+        await pusher.Received(3).PushAsync();
     }
 
     [Theory]
@@ -26,15 +27,16 @@ public class MetricPusherHostedServiceTests
     [InlineData(5)]
     public async Task WithGivenInterval_PushMetricPeriodically(int seconds)
     {
-        var metricPusherMock = Substitute.For<IMetricPusher>();
-        var metricPusherService = new MetricPusherHostedService(metricPusherMock, TimeSpan.FromSeconds(seconds));
-        var canellationToken = Arg.Any<CancellationToken>();
+        var pusher = Substitute.For<IMetricPusher>();
+        var ct = Arg.Any<CancellationToken>();
 
-        await metricPusherService.StartAsync(canellationToken);
-        await Task.Delay(GetDelay(seconds), canellationToken);
-        await metricPusherService.StopAsync(canellationToken);
+        var hostedService = new MetricPusherHostedService(pusher, TimeSpan.FromSeconds(seconds));
 
-        await metricPusherMock.Received(3).PushAsync();
+        await hostedService.StartAsync(ct);
+        await Task.Delay(GetDelay(seconds), ct);
+        await hostedService.StopAsync(ct);
+
+        await pusher.Received(3).PushAsync();
     }
 
     [Fact]
@@ -45,11 +47,12 @@ public class MetricPusherHostedServiceTests
         var ct = Arg.Any<CancellationToken>();
 
         var hostedService = new TestableMetricPusherHostedService(pusher);
+
         await hostedService.StartAsync(ct);
-        await Task.Delay(1000, ct);
+        await Task.Delay(GetDelay(1), ct);
         await hostedService.StopAsync(ct);
 
-        Assert.True(hostedService.ErrorHandled);
+        hostedService.ErrorHandled.Should().BeTrue();
     }
 
     private static TimeSpan GetDelay(int seconds)
