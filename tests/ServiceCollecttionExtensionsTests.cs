@@ -10,7 +10,7 @@ public class ServiceCollecttionExtensionsTests
     {
         var servicesCollection = Substitute.For<IServiceCollection>();
 
-        Action act = () => servicesCollection.AddMetricPusherService(null, TimeSpan.FromSeconds(1));
+        Action act = () => servicesCollection.AddMetricPusherHostedService(null, TimeSpan.FromSeconds(1));
 
         act.Should().Throw<ArgumentNullException>();
     }
@@ -21,7 +21,7 @@ public class ServiceCollecttionExtensionsTests
         var servicesCollection = Substitute.For<IServiceCollection>();
         var metricPusher = Substitute.For<IMetricPusher>();
 
-        Action act = () => servicesCollection.AddMetricPusherService(metricPusher, TimeSpan.Zero);
+        Action act = () => servicesCollection.AddMetricPusherHostedService(metricPusher, TimeSpan.Zero);
 
         act.Should().Throw<ArgumentOutOfRangeException>();
     }
@@ -32,11 +32,11 @@ public class ServiceCollecttionExtensionsTests
         var servicesCollection = new ServiceCollection();
         var metricPusher = Substitute.For<IMetricPusher>();
 
-        servicesCollection.AddMetricPusherService(metricPusher);
+        servicesCollection.AddMetricPusherHostedService(metricPusher);
         var provider = servicesCollection.BuildServiceProvider();
         var service = provider.GetRequiredService<IHostedService>();
 
-        service.Should().BeOfType<MetricPusherService>();
+        service.Should().BeOfType<MetricPusherHostedService>();
     }
 
     [Fact]
@@ -45,10 +45,10 @@ public class ServiceCollecttionExtensionsTests
         var servicesCollection = new ServiceCollection();
         var metricPusher = Substitute.For<IMetricPusher>();
 
-        servicesCollection.AddMetricPusherService(metricPusher, TimeSpan.FromSeconds(1));
+        servicesCollection.AddMetricPusherHostedService(metricPusher, TimeSpan.FromSeconds(1));
         var provider = servicesCollection.BuildServiceProvider();
         var service = provider.GetRequiredService<IHostedService>();
 
-        service.Should().BeOfType<MetricPusherService>();
+        service.Should().BeOfType<MetricPusherHostedService>();
     }
 }

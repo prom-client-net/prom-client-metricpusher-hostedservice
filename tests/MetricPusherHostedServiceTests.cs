@@ -3,13 +3,13 @@ using System.Threading.Tasks;
 
 namespace Prometheus.Client.MetricPusher.HostedService.Tests;
 
-public class MetricPusherServiceTests
+public class MetricPusherHostedServiceTests
 {
     [Fact]
     public async Task WithDefaultInterval_PushMetricPeriodically()
     {
         var metricPusherMock = Substitute.For<IMetricPusher>();
-        var metricPusherService = new MetricPusherService(metricPusherMock);
+        var metricPusherService = new MetricPusherHostedService(metricPusherMock);
         var canellationToken = Arg.Any<CancellationToken>();
 
         await metricPusherService.StartAsync(canellationToken);
@@ -27,7 +27,7 @@ public class MetricPusherServiceTests
     public async Task WithGivenInterval_PushMetricPeriodically(int seconds)
     {
         var metricPusherMock = Substitute.For<IMetricPusher>();
-        var metricPusherService = new MetricPusherService(metricPusherMock, TimeSpan.FromSeconds(seconds));
+        var metricPusherService = new MetricPusherHostedService(metricPusherMock, TimeSpan.FromSeconds(seconds));
         var canellationToken = Arg.Any<CancellationToken>();
 
         await metricPusherService.StartAsync(canellationToken);

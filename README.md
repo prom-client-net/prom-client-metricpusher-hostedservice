@@ -29,7 +29,7 @@ var metricPusher = new MetricPusher(new MetricPusherOptions
 ```
 
 ```c#
-services.AddMetricPusherService(metricPusher);
+services.AddMetricPusherHostedService(metricPusher);
 ```
 
 ## Contribute

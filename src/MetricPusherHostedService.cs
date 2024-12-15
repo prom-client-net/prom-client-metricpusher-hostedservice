@@ -5,17 +5,17 @@ using Microsoft.Extensions.Hosting;
 
 namespace Prometheus.Client.MetricPusher.HostedService;
 
-public class MetricPusherService : BackgroundService
+public class MetricPusherHostedService : BackgroundService
 {
     private readonly IMetricPusher _pusher;
     private readonly TimeSpan _interval;
 
-    public MetricPusherService(IMetricPusher pusher)
+    public MetricPusherHostedService(IMetricPusher pusher)
         : this(pusher, Defaults.Interval)
     {
     }
 
-    public MetricPusherService(IMetricPusher pusher, TimeSpan interval)
+    public MetricPusherHostedService(IMetricPusher pusher, TimeSpan interval)
     {
         _pusher = pusher;
         _interval = interval;
