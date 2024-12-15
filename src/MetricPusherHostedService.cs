@@ -36,10 +36,14 @@ public class MetricPusherHostedService(IMetricPusher pusher, TimeSpan pushInterv
             {
                 await pusher.PushAsync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO: report error to DiagnosticSource?
+                OnPushError(pusher, ex);
             }
         }
+    }
+
+    protected virtual void OnPushError(IMetricPusher metricPusher, Exception exception)
+    {
     }
 }
