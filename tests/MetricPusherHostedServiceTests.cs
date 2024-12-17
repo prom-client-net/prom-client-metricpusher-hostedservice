@@ -9,13 +9,12 @@ public class MetricPusherHostedServiceTests
     public async Task WithDefaultInterval_PushMetricPeriodically()
     {
         var pusher = Substitute.For<IMetricPusher>();
-        var ct = Arg.Any<CancellationToken>();
 
         var hostedService = new MetricPusherHostedService(pusher);
 
-        await hostedService.StartAsync(ct);
-        await Task.Delay(GetDelay(1), ct);
-        await hostedService.StopAsync(ct);
+        await hostedService.StartAsync(CancellationToken.None);
+        await Task.Delay(GetDelay(1));
+        await hostedService.StopAsync(CancellationToken.None);
 
         await pusher.Received(3).PushAsync();
     }
@@ -28,13 +27,11 @@ public class MetricPusherHostedServiceTests
     public async Task WithGivenInterval_PushMetricPeriodically(int seconds)
     {
         var pusher = Substitute.For<IMetricPusher>();
-        var ct = Arg.Any<CancellationToken>();
-
         var hostedService = new MetricPusherHostedService(pusher, TimeSpan.FromSeconds(seconds));
 
-        await hostedService.StartAsync(ct);
-        await Task.Delay(GetDelay(seconds), ct);
-        await hostedService.StopAsync(ct);
+        await hostedService.StartAsync(CancellationToken.None);
+        await Task.Delay(GetDelay(seconds));
+        await hostedService.StopAsync(CancellationToken.None);
 
         await pusher.Received(3).PushAsync();
     }
@@ -44,13 +41,12 @@ public class MetricPusherHostedServiceTests
     {
         var pusher = Substitute.For<IMetricPusher>();
         pusher.PushAsync().Returns(Task.FromException(new Exception("Simulated Push Exception")));
-        var ct = Arg.Any<CancellationToken>();
 
         var hostedService = new TestableMetricPusherHostedService(pusher);
 
-        await hostedService.StartAsync(ct);
-        await Task.Delay(100, ct);
-        await hostedService.StopAsync(ct);
+        await hostedService.StartAsync(CancellationToken.None);
+        await Task.Delay(100);
+        await hostedService.StopAsync(CancellationToken.None);
 
         hostedService.ErrorHandled.Should().BeTrue();
     }
