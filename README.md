@@ -1,4 +1,4 @@
-# prom-client-metricpusher-hostedservice
+# Prometheus.Client.MetricPusher.HostedService
 
 [![ci](https://img.shields.io/github/actions/workflow/status/prom-client-net/prom-client-metricpusher-hostedservice/ci.yml?branch=main&label=ci&logo=github&style=flat-square)](https://github.com/prom-client-net/prom-client-metricpusher-hostedservice/actions/workflows/ci.yml)
 [![nuget](https://img.shields.io/nuget/v/Prometheus.Client.MetricPusher.HostedService?logo=nuget&style=flat-square)](https://www.nuget.org/packages/Prometheus.Client.MetricPusher.HostedService)

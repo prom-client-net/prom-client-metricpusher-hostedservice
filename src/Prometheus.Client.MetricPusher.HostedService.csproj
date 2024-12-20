@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net462;netstandard2.0;net6.0;net8.0</TargetFrameworks>
-    <Description>MetricPusher as HostedService</Description>
+    <Description>MetricPusher as HostedService for Prometheus.Client</Description>
     <RepositoryUrl>https://github.com/prom-client-net/prom-client-metricpusher-hostedservice</RepositoryUrl>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
