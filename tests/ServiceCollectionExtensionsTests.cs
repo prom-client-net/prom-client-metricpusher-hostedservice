@@ -10,9 +10,7 @@ public class ServiceCollectionExtensionsTests
     {
         var servicesCollection = Substitute.For<IServiceCollection>();
 
-        Action act = () => servicesCollection.AddMetricPusherHostedService(null, TimeSpan.FromSeconds(1));
-
-        act.Should().Throw<ArgumentNullException>();
+        Assert.Throws<ArgumentNullException>(() => servicesCollection.AddMetricPusherHostedService(null, TimeSpan.FromSeconds(1)));
     }
 
     [Fact]
@@ -21,9 +19,7 @@ public class ServiceCollectionExtensionsTests
         var servicesCollection = Substitute.For<IServiceCollection>();
         var metricPusher = Substitute.For<IMetricPusher>();
 
-        Action act = () => servicesCollection.AddMetricPusherHostedService(metricPusher, TimeSpan.Zero);
-
-        act.Should().Throw<ArgumentOutOfRangeException>();
+        Assert.Throws<ArgumentOutOfRangeException>(() => servicesCollection.AddMetricPusherHostedService(metricPusher, TimeSpan.Zero));
     }
 
     [Fact]
@@ -36,7 +32,7 @@ public class ServiceCollectionExtensionsTests
         var provider = servicesCollection.BuildServiceProvider();
         var service = provider.GetRequiredService<IHostedService>();
 
-        service.Should().BeOfType<MetricPusherHostedService>();
+        Assert.IsType<MetricPusherHostedService>(service);
     }
 
     [Fact]
@@ -49,6 +45,6 @@ public class ServiceCollectionExtensionsTests
         var provider = servicesCollection.BuildServiceProvider();
         var service = provider.GetRequiredService<IHostedService>();
 
-        service.Should().BeOfType<MetricPusherHostedService>();
+        Assert.IsType<MetricPusherHostedService>(service);
     }
 }

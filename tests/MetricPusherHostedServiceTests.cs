@@ -48,7 +48,7 @@ public class MetricPusherHostedServiceTests
         await Task.Delay(100);
         await hostedService.StopAsync(CancellationToken.None);
 
-        hostedService.ErrorHandled.Should().BeTrue();
+        Assert.True(hostedService.ErrorHandled);
     }
 
     private static TimeSpan GetDelay(int seconds)
